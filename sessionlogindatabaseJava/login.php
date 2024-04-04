@@ -13,9 +13,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "SELECT id, username, password FROM users WHERE username='$username'";
-    $result = $conn->query($sql);
+    $stmt = $conn->prepare("SELECT id, username, password FROM users WHERE username=? AND password=?");
+    $stmt->bind_param("ss", $username, $password);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
+    // Check if user exists
     if ($result->num_rows == 1) {
         $row = $result->fetch_assoc();
         $_SESSION['user_id'] = $row['id'];
@@ -23,13 +26,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         header("Location: index.php");
         exit;
     } else {
-        $error = "Invalid username or password";
+        $error = '<p style="color:red;">Invalid username or password</p>';
     }
 
     $stmt->close();
     $conn->close();
-}
-?>
+} ?>
 
 <!DOCTYPE html>
 <html>
@@ -41,8 +43,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
     
     <div class="card">
-    <h2>Login</h2>
-    <?php if(isset($error_message)) { echo $error_message . "<br>"; } ?>
+    <h2>Login</h2> 
+    <?php if(isset($error)) { echo $error . "<br>"; } ?>
     <form method="post" action="">
         Username: <input type="text" name="username" required><br>
         Password: <input type="password" name="password" id="pass" required><br>
@@ -53,47 +55,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 </body>
 </html>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <style>
     .card{
 			width:400px;
-		
-			
 			text-align:center;
 			padding:30px;	
-			border:4px #a517ba solid;
-			border-radius:5px;	
 		}
 	</style>
     <script>

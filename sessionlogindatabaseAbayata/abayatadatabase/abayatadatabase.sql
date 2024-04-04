@@ -38,8 +38,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`Id`, `username`, `password`) VALUES
-(1, 'lawrence', 'luego'),
-(3, 'lawrence123', 'labrador');
+(1, 'rj', 'abayata'),
+(3, 'abayata', 'rj');
 
 --
 -- Indexes for dumped tables

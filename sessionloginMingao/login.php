@@ -6,7 +6,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = $_POST['password'];
 
     // Validate login credentials
-    if($username === "r4dical" && $password === "mingao123") {
+    if($username === "jomel" && $password === "brion") {
         $_SESSION['user_id'] = $username;
         header("Location: index.php");
         exit;

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smooth Scroll Navbar</title>
+    <style>
+        /* Basic styles for the navbar */
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #333;
+            padding: 10px;
+        }
+
+        .navbar a {
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .navbar a:hover {
+            background-color: #575757;
+        }
+
+        /* Spacing to make the scroll effect visible */
+        section {
+            padding: 100px;
+            margin-top: 50px;
+            height: 600px;
+        }
+
+        /* Section colors for visibility */
+        #section1 { background-color: lightcoral; }
+        #section2 { background-color: lightblue; }
+        #section3 { background-color: lightgreen; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /* Style for the button */
+    #openPopupBtn {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    /* Hidden by default */
+    #popupDiv {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 300px;
+      padding: 20px;
+      background-color: white;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+      z-index: 1000;
+    }
+
+    /* Overlay to darken background when popup is shown */
+    #overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+    }
+
+    /* Style for close button */
+    #closePopupBtn {
+      background-color: red;
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      float: right;
+    }
+    </style>
+</head>
+<body>
+
+    <navbar class="navbar">
+        <a href="#section1">Section 1</a>
+        <a href="#section2">Section 2</a>
+        <a href="#section3">Section 3</a>
+    </navbar>
+
+    <section id="section1">
+        <h2>Section 1</h2>
+        <p>This is section 1.</p>
+    </section>
+
+    <section id="section2">
+        <h2>Section 2</h2>
+        <p>This is section 2.</p>
+    </section>
+
+    <section id="section3">
+        <h2>Section 3</h2>
+        <p>This is section 3.</p>
+    </section>
+
+    <script>
+        // Optional: Smooth scroll behavior in JavaScript (supported in modern browsers)
+        document.querySelectorAll('.navbar a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                document.querySelector(targetId).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+      <div class="navbar1"></div>
+        <a href="#section1">Section 1</a>
+        <a href="#section2">Section 2</a>
+        <a href="#section3">Section 3</a>
+    </div>
+
+    <!-- Button to trigger the popup -->
+  <button id="openPopupBtn">Open Popup</button>
+
+  <!-- Overlay to darken the background -->
+  <div id="overlay"></div>
+
+  <!-- The popup div -->
+  <div id="popupDiv">
+    <button id="closePopupBtn">X</button>
+    <h2>Popup Content</h2>
+    <p>This is the content inside the popup.</p>
+  </div>
+
+  <script>
+    // Get the elements
+    const openPopupBtn = document.getElementById('openPopupBtn');
+    const closePopupBtn = document.getElementById('closePopupBtn');
+    const popupDiv = document.getElementById('popupDiv');
+    const overlay = document.getElementById('overlay');
+
+    // Function to show the popup
+    openPopupBtn.addEventListener('click', function() {
+      popupDiv.style.display = 'block';
+      overlay.style.display = 'block';
+    });
+
+    // Function to close the popup
+    closePopupBtn.addEventListener('click', function() {
+      popupDiv.style.display = 'none';
+      overlay.style.display = 'none';
+    });
+
+    // Close popup when clicking outside the popup
+    overlay.addEventListener('click', function() {
+      popupDiv.style.display = 'none';
+      overlay.style.display = 'none';
+    });
+  </script>
+</body>
+</html>

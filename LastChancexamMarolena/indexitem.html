@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function findIndices(list, itemsToFind) {
+    itemsToFind.forEach(item => {
+        let forwardIndex = list.indexOf(item);
+        let backwardIndex = list.length - 1 - list.lastIndexOf(item);
+        
+        console.log(`${item} is found in index (${forwardIndex}) forward and in backward (${backwardIndex})`);
+    });
+}
+
+// Example usage:
+const list = ['A', 'B', 'C', 'D', 'E', 'G', 'Z', 'H'];
+const itemsToFind = ['B', 'D', 'H'];
+
+findIndices(list, itemsToFind);
+
+  </script>
+</body>
+</html>

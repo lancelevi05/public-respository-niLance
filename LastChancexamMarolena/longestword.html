@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="assets/bootstrap-5.3.3-dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="assets/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/scripts/jquery-3.7.1.min.js"></script>
+  <link rel="stylesheet" href="assets/css/stylse.css">
+  <title>Find Longest Word</title>
+
+  <style>
+    #enter,#result{
+      border-radius:100px;
+    }
+    body{
+      display:flex;
+      height: 100vh;
+      width: 100vw;
+      justify-content: center;
+      align-items: center;
+
+    }
+  </style>
+</head>
+<body>
+ 
+<div>
+    <p class="btn btn-secondary" id="enter"></p>
+    <br>
+    <p class="btn btn-secondary" id="result"></p>
+</div>
+
+  <script>
+    function longest(str) {
+      // Match words (alphanumeric characters)
+      str = str.match(/[a-zA-Z0-9]+/gi);
+      
+      // Initialize the largest word
+      let largest = "";
+      
+      // Find the longest word
+      for (let i = 0; i < str.length; i++) {
+          if (str[i].length > largest.length) {
+              largest = str[i];
+          }
+      }
+      return largest;
+    }
+
+    // Add event listener to the button
+   
+      const sentence = prompt("Enter a sentence:"); 
+      
+      if (sentence === null || sentence.trim() === "") {
+        document.getElementById("result").innerHTML = "";
+      } else {
+        const longestWord = longest(sentence); 
+        document.getElementById("result").innerHTML = "The Longest Word is: "+longestWord; 
+        sentence = document.getElementById("enter").innerHTML = sentence;
+      }
+    
+  </script>
+</body>
+</html>

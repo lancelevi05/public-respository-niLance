@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Factorial Calculator</title> 
+</head>
+<body>
+<script type="text/javascript">
+    var input = prompt("Enter the number to get factorial of: ");
+    input = parseInt(input); 
+    var result = 1; 
+    
+    if (input === 0) {
+        result = 1; 
+    } else {
+        for (var i = 1; i <= input; i++) {
+            result *= i; 
+        }
+    }
+    
+    document.writeln(result);
+</script>
+</body>
+</html>

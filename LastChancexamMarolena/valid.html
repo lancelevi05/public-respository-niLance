@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function isValidName(name) {
+   
+    const regex = /^[A-Za-z]+$/; 
+    if (regex.test(name)) {
+        return `Welcome, ${name}`;
+    } else {
+        return "Not a name";
+    }
+}
+
+// Test Case Inputs and Outputs
+console.log(isValidName("SQUALL"));   
+console.log(isValidName("42BLCO"));    
+console.log(isValidName("YOURNAME"));  
+  </script>
+</body>
+</html>
